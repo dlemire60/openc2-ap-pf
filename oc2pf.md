@@ -1188,20 +1188,6 @@ This section will summarize and provide examples of OpenC2 Commands as they pert
 
 The samples provided in this section are for illustrative purposes only and are not to be interpreted as operational examples for actual systems.
 
-The following examples include Binary fields which are encoded in Base64url format. The examples show JSON-serialized Commands; the conversion of Base64url values to Binary data and String display text is:
-
-| Base64url | Binary | Display String |
-| :--- | :--- | :--- |
-| `AQIDBA` | `01020304` | `1.2.3.4` |
-| `xgIDBA` | `c6020304` | `198.2.3.4` |
-| `xjNkEQ` | `c6336411` | `198.51.100.17` |
-
-The examples include Integer Date-Time fields; the conversion of Integer values to String display text is:
-
-| Integer | Display String |
-| :--- | :--- |
-| `1534775460000` | `Monday, August 20, 2018 2:31:00 PM GMT, 2018-08-20T10:31:00-04:00` |
-
 =======
 ## E.1 Deny and Allow
 
