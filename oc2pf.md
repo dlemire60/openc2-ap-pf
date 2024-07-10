@@ -553,7 +553,7 @@ OpenC2 Consumers that receive but do not implement the 'allow ipv4_connection' C
 The 'allow ipv6_connection' Command is OPTIONAL for Openc2 Producers implementing the PF profile.
 The 'allow ipv6_connection' Command is OPTIONAL for Openc2 Consumers implementing the PF profile.
 
-The Command permits traffic that is consistent with the specified ipv6_connection. A valid 'allow ipv6_connection' Command has at least one property of the ipv6_connection populated and may have any combination of the five properties populated. An unpopulated property within the the ipv4_connection Target MUST be treated as an 'any'.
+The Command permits traffic that is consistent with the specified ipv6_connection. A valid 'allow ipv6_connection' Command has at least one property of the ipv6_connection populated and may have any combination of the five properties populated. An unpopulated property within the the ipv6_connection Target MUST be treated as an 'any'.
 
 OpenC2 Consumers that receive but do not implement the 'allow ipv6_connection' Command:
 
