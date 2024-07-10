@@ -1072,7 +1072,15 @@ Mavroeidis, V., & Brule, J. A Nonproprietary Language for the Command and Contro
 
 # Appendix B. Safety, Security and Privacy Considerations
 
-Implementors should understand the topology that will be controlled and take steps to ensure the security of systems generating and accepting commands. The technical committee recommends taking steps such as enabling both Transport Layer Security and mutual authentication. Additionally, implementing consumer-side checks such as type enforcement and length are recommended.
+OpenC2, as a cyber defense automation tool, is high-value target for adversaries
+attempting to exploit an environment where it is used. Appendix B of the OpenC2
+Architecture Specification [[OpenC2-Arch-v1.0](#openc2-arch-v10)] discusses:
+
+- Threats to OpenC2
+- Applying security services to OpenC2 operations
+- Network topology considerations for OpenC2 messages
+
+Refer to that document for a review of these topics in the context of OpenC2.
 
 -------
 
