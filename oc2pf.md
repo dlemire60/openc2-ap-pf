@@ -166,8 +166,6 @@ OpenC2 is a suite of specifications that enables command and control of cyber de
 
 This specification defines an Actuator profile for **Packet Filtering (PF)**. In particular, the specification comprises a set of Actions, Targets and Target Specifiers, Command Arguments, and Actuator Specifiers that integrates PF functionality with the OpenC2 Command set. Through this Command set, cyber security orchestrators may gain visibility into and provide control over PF functionality in a manner that is independent of the instance of the PF function. 
 
-All components, devices, and systems that provide PF functionality MUST implement the identified OpenC2 Actions, Targets, Specifiers, and Arguments as specified in the Conformance section of this specification. 
-
 Though cyber defense components, devices, systems and/or instances may implement multiple Actuator profiles, a particular OpenC2 Message may reference at most a single Actuator profile. The scope of this document is limited to PF. 
 
 ---
@@ -246,6 +244,8 @@ Example:
 _This section is normative._
 
 This section defines the set of Actions, Targets, Arguments, and Actuator Specifiers that are meaningful in the context of PF and the appropriate status codes, status texts, and other properties of a Response message. In addition, this section defines the Commands allowed by this Actuator profile. Section 2 is organized into three major subsections; [Command Components](2.1-openc2-command-components), [Response Components](2.2-openc2-response-components), and [Commands](2.3-openc2-commands).
+
+All components, devices, and systems that provide PF functionality MUST implement the identified OpenC2 Actions, Targets, Specifiers, and Arguments as specified in the Conformance section of this specification. 
 
 Extensions to the Language Specification are defined in accordance with Version 1.0 of the [OpenC2 Language Specification](#openc2-lang-v10), Section 3.1.4, where:
 
