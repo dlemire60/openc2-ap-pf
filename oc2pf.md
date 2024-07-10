@@ -1188,6 +1188,12 @@ This section will summarize and provide examples of OpenC2 Commands as they pert
 
 The samples provided in this section are for illustrative purposes only and are not to be interpreted as operational examples for actual systems.
 
+The examples include Integer Date-Time fields; the conversion of Integer values to String display text is:
+
+| Integer | Display String |
+| :--- | :--- |
+| `1534775460000` | `Monday, August 20, 2018 2:31:00 PM GMT, 2018-08-20T10:31:00-04:00` |
+
 =======
 ## E.1 Deny and Allow
 
