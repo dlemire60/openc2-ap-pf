@@ -174,7 +174,7 @@ Though cyber defense components, devices, systems and/or instances may implement
 
 The rest of the specification is organized as follows: 
 
-The remaining of [Section 1](#1-introduction) includes infomation about the IPR policy, terminology used, and document conventions pertinent to this Actuator profile specification.
+The remaining of [Section 1](#1-introduction) includes information about the terminology used, and document conventions pertinent to this Actuator profile specification.
 
 [Section 2](#2-openc2-language-binding) (normative) binds this particular profile to Version 1.0 of the OpenC2 Language Specification ([[OpenC2-Lang-v1.0]](#openc2-lang-v10)). It enumerates the components of the Language Specification that are meaningful in the context of PF and also defines components that are applicable to this distinct profile. In addition, Section 2 defines the Commands (i.e., the Action/Target pairs, arguments, an associated specifiers) that are permitted in the context of PF.
 
@@ -218,6 +218,7 @@ _This section is normative._
 * The term "hyphen" used here refers to the ASCII hyphen or minus character, which in Unicode is "hyphen-minus", U+002D.
 
 #### 1.2.3.2 Font Colors and Style
+
 The following color, font and font style conventions are used in this document:
 
 * A fixed width font is used for all type names, property names, and literals.
