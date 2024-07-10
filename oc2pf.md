@@ -1050,7 +1050,11 @@ Arkko, J. and S. Bradner, "IANA Allocation Guidelines for the Protocol Field", B
 
 ###### [OpenC2-HTTPS-v1.1]
 
-Specification for Transfer of OpenC2 Messages via HTTPS Version 1.1. Edited by David Lemire. 30 November 2021. OASIS Committee Specification 01. <https://docs.oasis-open.org/openc2/open-impl-https/v1.1/cs01/open-impl-https-v1.1-cs01.html>. Latest stage: <https://docs.oasis-open.org/openc2/open-impl-https/v1.1/open-impl-https-v1.1.html>.
+*Specification for Transfer of OpenC2 Messages via HTTPS Version 1.1*. Edited by David Lemire. 30 November 2021. OASIS Committee Specification 01. <https://docs.oasis-open.org/openc2/open-impl-https/v1.1/cs01/open-impl-https-v1.1-cs01.html>. Latest stage: <https://docs.oasis-open.org/openc2/open-impl-https/v1.1/open-impl-https-v1.1.html>.
+
+###### [OpenC2-MQTT-v1.0]
+
+*Specification for Transfer of OpenC2 Messages via MQTT Version 1.0*. Edited by David Lemire. 19 November 2021. OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/transf-mqtt/v1.0/cs01/transf-mqtt-v1.0-cs01.html. Latest stage: https://docs.oasis-open.org/openc2/transf-mqtt/v1.0/transf-mqtt-v1.0.html
 
 ###### [ACD]
 
