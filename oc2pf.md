@@ -322,6 +322,28 @@ Usage Requirements:
 | :--- | :--- | :--- |
 | **Rule-ID** | Integer | Access control list rule identifier. |
 
+**_Type: Advanced-Connection (Record)_**
+
+| ID | Name            | Type              | # | Description                                                                            |
+|---:|:----------------|:------------------|--:|:---------------------------------------------------------------------------------------|
+|  1 | **src_addr**    | Adv-Addr          | 1 |                                                                                        |
+|  2 | **src_port**    | Integer{0..65536} | 1 |                                                                                        |
+|  3 | **dst_addr**    | Adv-Addr          | 1 |                                                                                        |
+|  4 | **dst_port**    | Integer{0..65535} | 1 |                                                                                        |
+|  5 | **protocol**    | ls:L4-Protocol    | 1 |                                                                                        |
+|  6 | **network**     | String            | 1 | Reference to the name (also known as tag) of logical network to which the rule applies |
+|  7 | **application** | String            | 1 |                                                                                        |
+
+**_Type: Adv-Addr (Choice)_**
+
+| ID | Name        | Type        | # | Description                                                        |
+|---:|:------------|:------------|--:|:-------------------------------------------------------------------|
+|  1 | **v4addr**  | ls:IPv4-Net | 1 | IPv4 CIDR block address as defined in the OpenC2 LS                |
+|  2 | **v6addr**  | ls:IPv6-Net | 1 | IPv6 "CIDR block" address as defined in the OpenC2 LS              |
+|  3 | **net_tag** | String      | 1 | A network  name, e.g., as used in cloud system network definitions |
+
+
+
 ### 2.1.3 Command Arguments
 Arguments provide additional precision to a Command by including information such as how, when, or where a Command is to be executed. Table 2.1.3-1 lists the Command Arguments defined in Version 1.0 of the [OpenC2 Language Specification](#openc2-lang-v10) as they relate to PF functionality. Table 2.1.3-2 lists the Command Arguments that are defined in this profile. Command Arguments that are defined in this profile (see Table 2.1.3-2) are referenced with the `pf` namespace identifier.
 
