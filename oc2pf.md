@@ -310,10 +310,6 @@ Usage Requirements:
 | 1024 | **rule_number** | Rule-ID | Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule.  |
 | 1025 | **advanced_connection** | Array | An advanced connection MUST be a seven-tuple intended to support newer and more advanced packet filters. See the description and usage requirement below.|
 
-Usage Requirements:
-* advanced_connection
-    * The seven-tuple is: src_addr, src_port, dst_addr, dst_port, protocol, network, and application. Any component, excluding network, not specified or specified as null MUST be treated as 'any'. When defined, src_port and dst_port MUST be an integer between 0 and 65535. When defined, src_addr and dst_addr MUST specify either an IPv4 address, IPv6 address, or a tag of type string. Application, typically used by next-generation firewalls, MUST be of type string. Network MUST be of type string being the reference to the name (also known as tag) of logical network to which the rule applies.
-
 **2.1.2.1 Data Type Definitions**
 
 **_Type: Rule-ID_**
@@ -333,6 +329,19 @@ Usage Requirements:
 |  5 | **protocol**    | ls:L4-Protocol    | 1 |                                                                                        |
 |  6 | **network**     | String            | 1 | Reference to the name (also known as tag) of logical network to which the rule applies |
 |  7 | **application** | String            | 1 |                                                                                        |
+
+Usage Requirements:
+* advanced_connection
+    * The seven-tuple is: src_addr, src_port, dst_addr, dst_port, protocol,
+      network, and application. Any component, excluding network, not specified
+      or specified as null MUST be treated as 'any'. When defined, src_port and
+      dst_port MUST be an integer between 0 and 65535. When defined, src_addr
+      and dst_addr MUST specify either an IPv4 address, IPv6 address, or a tag
+      of type string. Application, typically used by next-generation firewalls,
+      MUST be of type string. Network MUST be of type string being the reference
+      to the name (also known as tag) of logical network to which the rule
+      applies.
+
 
 **_Type: Adv-Addr (Choice)_**
 
