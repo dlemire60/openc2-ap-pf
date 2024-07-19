@@ -1027,6 +1027,14 @@ Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14,
 Bradner, S. and V. Paxson, "IANA Allocation Guidelines For Values In the Internet Protocol and Related Headers", BCP 37, RFC 2780, DOI 10.17487/RFC2780, March 2000, <https://www.rfc-editor.org/info/rfc2780>.
 ###### [RFC4443]
 Conta, A., Deering, S., and M. Gupta, Ed., "Internet Control Message Protocol (ICMPv6) for the Internet Protocol Version 6 (IPv6) Specification", STD 89, RFC 4443, DOI 10.17487/RFC4443, March 2006, <https://www.rfc-editor.org/info/rfc4443>.
+
+###### [RFC6335]
+
+Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S. Cheshire, "Internet
+Assigned Numbers Authority (IANA) Procedures for the Management of the Service
+Name and Transport Protocol Port Number Registry", BCP 165, RFC 6335, DOI
+10.17487/RFC6335, August 2011, <https://www.rfc-editor.org/info/rfc6335>.
+
 ###### [RFC8174]
 Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 ###### [RFC8259]
