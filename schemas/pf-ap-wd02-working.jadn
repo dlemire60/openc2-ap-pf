@@ -51,14 +51,14 @@
         [2, "src_port", "Integer", ["{0", "}65536", "[0", "]1"], ""],
         [3, "dst_addr", "Adv-Addr", ["[0", "]1"], ""],
         [4, "dst_port", "Integer", ["{0", "}65535", "[0", "]1"], ""],
-        [5, "protocol", "ls:L4-Protocol", [], ""],
+        [5, "protocol", "ls:L4-Protocol", ["[0", "]1"], ""],
         [6, "network", "String", ["[0", "]1"], "Reference to the name (also known as tag) of logical network to which the rule applies"],
         [7, "application", "String", ["[0", "]1"], ""]
       ]],
     ["Adv-Addr", "Choice", [], "Address format providing choice among IPv4, IPv6, or a text label", [
         [1, "v4addr", "ls:IPv4-Net", [], "IPv4 CIDR block address as defined in the OpenC2 LS"],
-        [2, "v6addr", "ls:IPv6-Net", ["[0", "]1"], "IPv6 \"CIDR block\" address as defined in the OpenC2 LS"],
-        [3, "net_tag", "String", ["[0", "]1"], "A network  name, e.g., as used in cloud system network definitions"]
+        [2, "v6addr", "ls:IPv6-Net", [], "IPv6 \"CIDR block\" address as defined in the OpenC2 LS"],
+        [3, "net_tag", "String", [], "A network  name, e.g., as used in cloud system network definitions"]
       ]],
     ["Args", "Map", [], "", [
         [1, "start_time", "ls:Date-Time", ["[0", "]1"], "The specific date/time to initiate the Command."],
