@@ -320,15 +320,15 @@ Usage Requirements:
 
 **_Type: Advanced-Connection (Record)_**
 
-| ID | Name            | Type              | # | Description                                                                              |
-|---:|:----------------|:------------------|--:|:-----------------------------------------------------------------------------------------|
-|  1 | **src_addr**    | Adv-Addr          | 1 | Source address range, one of IPv4, IPv6, or network tag                                  |
-|  2 | **src_port**    | Integer{0..65536} | 1 | Source service per [[RFC6335]](#rfc6335)                                                 |
-|  3 | **dst_addr**    | Adv-Addr          | 1 | Destination address range, one of IPv4, IPv6, or network tag                             |
-|  4 | **dst_port**    | Integer{0..65535} | 1 | Destination service per [[RFC6335]](#rfc6335)                                            |
-|  5 | **protocol**    | ls:L4-Protocol    | 1 | Layer 4 protocol (e.g., TCP) - see Section 3.4.2.11 of the OpenC2 Language Specification |
-|  6 | **network**     | String            | 1 | Reference to the name (also known as tag) of logical network to which the rule applies   |
-|  7 | **application** | String            | 1 | Reference to the name of the application to which the rule applies                       |
+| ID | Name            | Type              |  #   ~~~~| Description                                                                              |
+|---:|:----------------|:------------------|-----:|:-----------------------------------------------------------------------------------------|
+|  1 | **src_addr**    | Adv-Addr          | 0..1 | Source address range, one of IPv4, IPv6, or network tag                                  |
+|  2 | **src_port**    | Integer{0..65536} | 0..1 | Source service per [[RFC6335]](#rfc6335)                                                 |
+|  3 | **dst_addr**    | Adv-Addr          | 0..1 | Destination address range, one of IPv4, IPv6, or network tag                             |
+|  4 | **dst_port**    | Integer{0..65535} | 0..1 | Destination service per [[RFC6335]](#rfc6335)                                            |
+|  5 | **protocol**    | ls:L4-Protocol    | 0..1 | Layer 4 protocol (e.g., TCP) - see Section 3.4.2.11 of the OpenC2 Language Specification |
+|  6 | **network**     | String            | 0..1 | Reference to the name (also known as tag) of logical network to which the rule applies   |
+|  7 | **application** | String            | 0..1 | Reference to the name of the application to which the rule applies                       |
 
 Usage Requirements:
 * advanced_connection
@@ -345,11 +345,11 @@ Usage Requirements:
 
 **_Type: Adv-Addr (Choice)_**
 
-| ID | Name        | Type        | # | Description                                                        |
-|---:|:------------|:------------|--:|:-------------------------------------------------------------------|
-|  1 | **v4addr**  | ls:IPv4-Net | 1 | IPv4 CIDR block address as defined in the OpenC2 LS                |
-|  2 | **v6addr**  | ls:IPv6-Net | 1 | IPv6 "CIDR block" address as defined in the OpenC2 LS              |
-|  3 | **net_tag** | String      | 1 | A network  name, e.g., as used in cloud system network definitions |
+| ID | Name        | Type        | Description                                                        |
+|---:|:------------|:------------|:-------------------------------------------------------------------|
+|  1 | **v4addr**  | ls:IPv4-Net | IPv4 CIDR block address as defined in the OpenC2 LS                |
+|  2 | **v6addr**  | ls:IPv6-Net | IPv6 "CIDR block" address as defined in the OpenC2 LS              |
+|  3 | **net_tag** | String      | A network  name, e.g., as used in cloud system network definitions |
 
 
 
