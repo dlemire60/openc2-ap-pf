@@ -320,7 +320,7 @@ Usage Requirements:
 
 **_Type: Advanced-Connection (Record)_**
 
-| ID | Name            | Type              |  #   ~~~~| Description                                                                              |
+| ID | Name            | Type              |  #   | Description                                                                              |
 |---:|:----------------|:------------------|-----:|:-----------------------------------------------------------------------------------------|
 |  1 | **src_addr**    | Adv-Addr          | 0..1 | Source address range, one of IPv4, IPv6, or network tag                                  |
 |  2 | **src_port**    | Integer{0..65536} | 0..1 | Source service per [[RFC6335]](#rfc6335)                                                 |
