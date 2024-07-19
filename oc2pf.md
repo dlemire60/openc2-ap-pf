@@ -305,10 +305,10 @@ Usage Requirements:
 
 **_Type: Target (Choice)_**
 
-| ID | Name | Type | Description |
-| :--- | :--- | :--- | :--- |
-| 1024 | **rule_number** | Rule-ID | Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule.  |
-| 1025 | **advanced_connection** | Array | An advanced connection is a seven-tuple intended to support newer and more advanced packet filters. |
+|   ID | Name               | Type                | Description                                                                                                                                           |
+|-----:|:-------------------|:--------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1024 | **rule_number**    | Rule-ID             | Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule. |
+| 1025 | **adv_connection** | Advanced-Connection | Advanced connection type to support application layer firewalls                                                                                       |
 
 **2.1.2.1 Data Type Definitions**
 
