@@ -5,9 +5,9 @@
 
 # OpenC2 Actuator Profile for Packet Filtering Version 1.0
 
-## Committee Specification Draft 02
+## Working Draft 02
 
-## -- February 2022
+## 24 July 2024
 
 &nbsp;
 
