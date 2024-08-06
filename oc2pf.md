@@ -466,7 +466,7 @@ Table 2.2.1-1 lists the Response Results properties defined in Version 1.0 of th
 
 | ID | Name | Type | Description |
 | :--- | :--- | :--- | :--- |
-| 1024 | **rule_number** | Rule-ID | Rule identifier returned from allow or deny Command. |
+|  1 | **rule_number** | Rule-ID | Rule identifier returned from allow or deny Command. |
 
 ### 2.2.2 Response Status Codes
 Table 2.2.2-1 lists the Response Status Codes defined in Version 1.0 of the [OpenC2 Language Specification](#openc2-lang-v10) that are applicable to PF.
