@@ -55,8 +55,8 @@
 
 |   ID | Name               | Type                | # | Description                                                                                                                                           |
 |-----:|:-------------------|:--------------------|--:|:------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1024 | **rule_number**    | Rule-ID             | 1 | Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule. |
-| 1025 | **adv_connection** | Advanced-Connection | 1 | Advanced connection type to support application layer firewalls                                                                                       |
+| 1 | **rule_number**    | Rule-ID             | 1 | Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule. |
+| 2 | **adv_connection** | Advanced-Connection | 1 | Advanced connection type to support application layer firewalls                                                                                       |
 
 
 | Type Name   | Type Definition | Description |

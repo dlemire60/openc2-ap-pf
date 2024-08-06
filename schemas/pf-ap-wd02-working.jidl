@@ -37,8 +37,8 @@ Results = Map{1..*}
  1034  pf          PR-Results optional
 
 PF-Target = Choice                          // Targets defined for the PF AP
- 1024  rule_number     Rule-ID              // Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule.
- 1025  adv_connection  Advanced-Connection  // Advanced connection type to support application layer firewalls
+    1  rule_number     Rule-ID              // Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule.
+    2  adv_connection  Advanced-Connection  // Advanced connection type to support application layer firewalls
 
 Rule-ID = Integer
 
