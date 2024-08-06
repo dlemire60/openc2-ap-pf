@@ -307,8 +307,8 @@ Usage Requirements:
 
 |   ID | Name               | Type                | Description                                                                                                                                           |
 |-----:|:-------------------|:--------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1024 | **rule_number**    | Rule-ID             | Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule. |
-| 1025 | **adv_connection** | Advanced-Connection | Advanced connection type to support application layer firewalls                                                                                       |
+|   1  | **rule_number**    | Rule-ID             | Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule. |
+|   2  | **adv_connection** | Advanced-Connection | Advanced connection type to support application layer firewalls                                                                                       |
 
 **2.1.2.1 Data Type Definitions**
 
@@ -371,16 +371,16 @@ Arguments provide additional precision to a Command by including information suc
 
 **_Type: Args (Map)_**
 
-| ID | Name | Type | # | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| 1024 | **drop_process** | Drop-Process | 0..1 | Specifies how to handle denied packets. |
-| 1025 | **persistent** | Boolean | 0..1 | Normal operations assume any changes to a device are to be implemented persistently. Setting the persistent modifier to FALSE results in a change that is not persistent in the event of a reboot or restart. |
-| 1026 | **direction** | Direction | 0..1 | Specifies whether to apply rules to incoming or outgoing traffic. If omitted, rules are applied to ingress packets. |
-| 1027 | **insert_rule** | Rule-ID | 0..1 | Specifies the identifier of the rule within a list, typically used in a top-down rule list. |
-| 1028 | **logged** | Boolean | 0..1 | Specifies if a log entry should be recorded as traffic matches the rule. The manner and mechanism for recording these entries is implementation specific and not defined by this specification. |
-| 1029 | **description** | String | 0..1| A note to annotate or provide information regarding the rule. |
-| 1030 | **stateful** | Boolean | 0..1 | Specifies if the actuator should treat the request using state tables or connection state. |
-| 1031 | **priority** | Integer | 0..1 | Specifies the priority of a specific firewall rule for firewalls that assign a numeric priority. It is used to determine which firewall rule takes precedence. |
+|   ID | Name             | Type          | # | Description                                                                                                                                                                                                   |
+|-----:|:-----------------|:--------------|--:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   1  | **drop_process** | Drop-Process  | 1 | Specifies how to handle denied packets                                                                                                                                                                        |
+|   2  | **persistent**   | Boolean       | 1 | Normal operations assume any changes to a device are to be implemented persistently. Setting the persistent modifier to FALSE results in a change that is not persistent in the event of a reboot or restart. |
+|   3  | **direction**    | Direction     | 1 | Specifies whether to apply rules to incoming or outgoing traffic. If omitted, rules are applied to ingress packets.                                                                                           |
+|   4  | **insert_rule**  | Rule-ID       | 1 | Specifies the identifier of the rule within a list, typically used in a top-down rule list.                                                                                                                   |
+|   5  | **logged**       | Boolean       | 1 | Specifies if a log entry should be recorded as traffic matches the rule. The manner and mechanism for recording these entries is implementation specific and not defined by this specification.               |
+|   6  | **description**  | String        | 1 | A note to annotate or provide information regarding the rule.                                                                                                                                                 |
+|   7  | **stateful**     | Boolean       | 1 | Specifies if the actuator should treat the request using state tables or connection state.                                                                                                                    |
+|   8  | **priority**     | Integer{0..*} | 1 | Specifies the priority of a specific firewall rule for firewalls that assign a numeric priority. It is used to determine which firewall rule takes precedence.                                                |
 
 Usage Requirements:
 * insert_rule:
