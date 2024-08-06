@@ -64,14 +64,14 @@ Args = Map{1..*}
  1034  pf                  PF-ARgs
 
 PF-Args = Map{1..*}
- 1024  drop_process  Drop-Process optional  // Specifies how to handle denied packets
- 1025  persistent    Boolean optional       // Normal operations assume any changes to a device are to be implemented persistently. Setting the persistent modifier to FALSE results in a change that is not persistent in the event of a reboot or restart.
- 1026  direction     Direction optional     // Specifies whether to apply rules to incoming or outgoing traffic. If omitted, rules are applied to ingress packets.
- 1027  insert_rule   Rule-ID optional       // Specifies the identifier of the rule within a list, typically used in a top-down rule list.
- 1028  logged        Boolean optional       // Specifies if a log entry should be recorded as traffic matches the rule. The manner and mechanism for recording these entries is implementation specific and not defined by this specification.
- 1029  description   String optional        // A note to annotate or provide information regarding the rule.
- 1030  stateful      Boolean optional       // Specifies if the actuator should treat the request using state tables or connection state.
- 1031  priority      Integer optional       // Specifies the priority of a specific firewall rule for firewalls that assign a numeric priority. It is used to determine which firewall rule takes precedence.
+    1  drop_process  Drop-Process optional  // Specifies how to handle denied packets
+    2  persistent    Boolean optional       // Normal operations assume any changes to a device are to be implemented persistently. Setting the persistent modifier to FALSE results in a change that is not persistent in the event of a reboot or restart.
+    3  direction     Direction optional     // Specifies whether to apply rules to incoming or outgoing traffic. If omitted, rules are applied to ingress packets.
+    4  insert_rule   Rule-ID optional       // Specifies the identifier of the rule within a list, typically used in a top-down rule list.
+    5  logged        Boolean optional       // Specifies if a log entry should be recorded as traffic matches the rule. The manner and mechanism for recording these entries is implementation specific and not defined by this specification.
+    6  description   String optional        // A note to annotate or provide information regarding the rule.
+    7  stateful      Boolean optional       // Specifies if the actuator should treat the request using state tables or connection state.
+    8  priority      Integer optional       // Specifies the priority of a specific firewall rule for firewalls that assign a numeric priority. It is used to determine which firewall rule takes precedence.
 
 Drop-Process = Enumerated
     1  none       // Drop the packet and do not send a notification to the source of the packet.
