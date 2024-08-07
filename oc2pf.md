@@ -314,14 +314,10 @@ Usage Requirements:
 
 **_Type: Target (Choice)_**
 
-| ID | Name | Type | Description |
-| :--- | :--- | :--- | :--- |
-| 1024 | **rule_number** | Rule-ID | Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule.  |
-| 1025 | **advanced_connection** | Array | An advanced connection MUST be a seven-tuple intended to support newer and more advanced packet filters. See the description and usage requirement below.|
-
-Usage Requirements:
-* advanced_connection
-    * The seven-tuple is: src_addr, src_port, dst_addr, dst_port, protocol, network, and application. Any component, excluding network, not specified or specified as null MUST be treated as 'any'. When defined, src_port and dst_port MUST be an integer between 0 and 65535. When defined, src_addr and dst_addr MUST specify either an IPv4 address, IPv6 address, or a tag of type string. Application, typically used by next-generation firewalls, MUST be of type string. Network MUST be of type string being the reference to the name (also known as tag) of logical network to which the rule applies.
+|   ID | Name               | Type                | Description                                                                                                                                           |
+|-----:|:-------------------|:--------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   1  | **rule_number**    | Rule-ID             | Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule. |
+|   2  | **adv_connection** | Advanced-Connection | Advanced connection type to support application layer firewalls                                                                                       |
 
 **2.1.2.1 Data Type Definitions**
 
@@ -330,6 +326,41 @@ Usage Requirements:
 | Type Name | Type | Description |
 | :--- | :--- | :--- |
 | **Rule-ID** | Integer | Access control list rule identifier. |
+
+**_Type: Advanced-Connection (Record)_**
+
+| ID | Name            | Type           |  #   | Description                                                                              |
+|---:|:----------------|:---------------|-----:|:-----------------------------------------------------------------------------------------|
+|  1 | **src_addr**    | Adv-Addr       | 0..1 | Source address range, one of IPv4, IPv6, or network tag                                  |
+|  2 | **src_port**    | ls:Port        | 0..1 | Source service per [[RFC6335]](#rfc6335)                                                 |
+|  3 | **dst_addr**    | Adv-Addr       | 0..1 | Destination address range, one of IPv4, IPv6, or network tag                             |
+|  4 | **dst_port**    | ls:Port        | 0..1 | Destination service per [[RFC6335]](#rfc6335)                                            |
+|  5 | **protocol**    | ls:L4-Protocol | 0..1 | Layer 4 protocol (e.g., TCP) - see Section 3.4.2.11 of the OpenC2 Language Specification |
+|  6 | **network**     | String         | 0..1 | Reference to the name (also known as tag) of logical network to which the rule applies   |
+|  7 | **application** | String         | 0..1 | Reference to the name of the application to which the rule applies                       |
+
+Usage Requirements:
+* advanced_connection
+    * The seven-tuple is: src_addr, src_port, dst_addr, dst_port, protocol,
+      network, and application. Any component, excluding network, not specified
+      or specified as null MUST be treated as 'any'. When defined, src_port and
+      dst_port MUST be an integer between 0 and 65535. When defined, src_addr
+      and dst_addr MUST specify either an IPv4 address, IPv6 address, or a tag
+      of type string. Application, typically used by next-generation firewalls,
+      MUST be of type string. Network MUST be of type string being the reference
+      to the name (also known as tag) of logical network to which the rule
+      applies.
+
+
+**_Type: Adv-Addr (Choice)_**
+
+| ID | Name        | Type        | Description                                                        |
+|---:|:------------|:------------|:-------------------------------------------------------------------|
+|  1 | **v4addr**  | ls:IPv4-Net | IPv4 CIDR block address as defined in the OpenC2 LS                |
+|  2 | **v6addr**  | ls:IPv6-Net | IPv6 "CIDR block" address as defined in the OpenC2 LS              |
+|  3 | **net_tag** | String      | A network  name, e.g., as used in cloud system network definitions |
+
+
 
 ### 2.1.3 Command Arguments
 Arguments provide additional precision to a Command by including information such as how, when, or where a Command is to be executed. Table 2.1.3-1 lists the Command Arguments defined in Version 1.0 of the [OpenC2 Language Specification](#openc2-lang-v10) as they relate to PF functionality. Table 2.1.3-2 lists the Command Arguments that are defined in this profile. Command Arguments that are defined in this profile (see Table 2.1.3-2) are referenced with the `pf` namespace identifier.
@@ -349,16 +380,16 @@ Arguments provide additional precision to a Command by including information suc
 
 **_Type: Args (Map)_**
 
-| ID | Name | Type | # | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| 1024 | **drop_process** | Drop-Process | 0..1 | Specifies how to handle denied packets. |
-| 1025 | **persistent** | Boolean | 0..1 | Normal operations assume any changes to a device are to be implemented persistently. Setting the persistent modifier to FALSE results in a change that is not persistent in the event of a reboot or restart. |
-| 1026 | **direction** | Direction | 0..1 | Specifies whether to apply rules to incoming or outgoing traffic. If omitted, rules are applied to ingress packets. |
-| 1027 | **insert_rule** | Rule-ID | 0..1 | Specifies the identifier of the rule within a list, typically used in a top-down rule list. |
-| 1028 | **logged** | Boolean | 0..1 | Specifies if a log entry should be recorded as traffic matches the rule. The manner and mechanism for recording these entries is implementation specific and not defined by this specification. |
-| 1029 | **description** | String | 0..1| A note to annotate or provide information regarding the rule. |
-| 1030 | **stateful** | Boolean | 0..1 | Specifies if the actuator should treat the request using state tables or connection state. |
-| 1031 | **priority** | Integer | 0..1 | Specifies the priority of a specific firewall rule for firewalls that assign a numeric priority. It is used to determine which firewall rule takes precedence. |
+|   ID | Name             | Type          | # | Description                                                                                                                                                                                                   |
+|-----:|:-----------------|:--------------|--:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   1  | **drop_process** | Drop-Process  | 1 | Specifies how to handle denied packets                                                                                                                                                                        |
+|   2  | **persistent**   | Boolean       | 1 | Normal operations assume any changes to a device are to be implemented persistently. Setting the persistent modifier to FALSE results in a change that is not persistent in the event of a reboot or restart. |
+|   3  | **direction**    | Direction     | 1 | Specifies whether to apply rules to incoming or outgoing traffic. If omitted, rules are applied to ingress packets.                                                                                           |
+|   4  | **insert_rule**  | Rule-ID       | 1 | Specifies the identifier of the rule within a list, typically used in a top-down rule list.                                                                                                                   |
+|   5  | **logged**       | Boolean       | 1 | Specifies if a log entry should be recorded as traffic matches the rule. The manner and mechanism for recording these entries is implementation specific and not defined by this specification.               |
+|   6  | **description**  | String        | 1 | A note to annotate or provide information regarding the rule.                                                                                                                                                 |
+|   7  | **stateful**     | Boolean       | 1 | Specifies if the actuator should treat the request using state tables or connection state.                                                                                                                    |
+|   8  | **priority**     | Integer{0..*} | 1 | Specifies the priority of a specific firewall rule for firewalls that assign a numeric priority. It is used to determine which firewall rule takes precedence.                                                |
 
 Usage Requirements:
 * insert_rule:
@@ -444,7 +475,7 @@ Table 2.2.1-1 lists the Response Results properties defined in Version 1.0 of th
 
 | ID | Name | Type | Description |
 | :--- | :--- | :--- | :--- |
-| 1024 | **rule_number** | Rule-ID | Rule identifier returned from allow or deny Command. |
+|  1 | **rule_number** | Rule-ID | Rule identifier returned from allow or deny Command. |
 
 ### 2.2.2 Response Status Codes
 Table 2.2.2-1 lists the Response Status Codes defined in Version 1.0 of the [OpenC2 Language Specification](#openc2-lang-v10) that are applicable to PF.
@@ -1014,6 +1045,13 @@ Bradner, S. and V. Paxson, "IANA Allocation Guidelines For Values In the Interne
 ###### [RFC4443]
 
 Conta, A., Deering, S., and M. Gupta, Ed., "Internet Control Message Protocol (ICMPv6) for the Internet Protocol Version 6 (IPv6) Specification", STD 89, RFC 4443, DOI 10.17487/RFC4443, March 2006, <https://www.rfc-editor.org/info/rfc4443>.
+
+###### [RFC6335]
+
+Cotton, M., Eggert, L., Touch, J., Westerlund, M., and S. Cheshire, "Internet
+Assigned Numbers Authority (IANA) Procedures for the Management of the Service
+Name and Transport Protocol Port Number Registry", BCP 165, RFC 6335, DOI
+10.17487/RFC6335, August 2011, <https://www.rfc-editor.org/info/rfc6335>.
 
 ###### [RFC8174]
 
