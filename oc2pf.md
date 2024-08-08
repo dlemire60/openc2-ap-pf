@@ -243,6 +243,13 @@ Example:
 }
 ~~~
 
+### 1.3.3 Schema
+
+The schema for this AP is defined using a [[JSON Abstract Data Notation
+(JADN)](#jadn-v10)] information model. The property tables in this document were
+generated programmatically from the JADN schema for consistency.
+
+
 # 2 OpenC2 Language Binding
 
 _This section is normative._
@@ -1029,6 +1036,11 @@ While any hyperlinks included in this appendix were valid at the time of publica
 ## A.1 Normative References
 
 The following documents are referenced in such a way that some or all of their content constitutes requirements of this document.
+
+###### [JADN-v1.0]
+_JSON Abstract Data Notation Version 1.0_. Edited by David Kemp. 17 August 2021. 
+OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html. 
+Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 
 ###### [RFC1034]
 
