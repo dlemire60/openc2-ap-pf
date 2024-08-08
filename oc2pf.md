@@ -210,16 +210,16 @@ _This section is normative._
 
 ### 1.2.2 Acronyms and Abbreviations
 
-### 1.2.3 Document Conventions
+## 1.3 Document Conventions
 
-#### 1.2.3.1 Naming Conventions
+### 1.3.1 Naming Conventions
 
 * [[RFC2119]](#rfc2119)/[[RFC8174]](#rfc8174) key words are in all uppercase.
 * All property names and literals are in lowercase, except when referencing canonical names defined in another standard (e.g., literal values from an IANA registry).
 * Words in property names are separated with an underscore (_), while words in string enumerations and type names are separated with a hyphen (-).
 * The term "hyphen" used here refers to the ASCII hyphen or minus character, which in Unicode is "hyphen-minus", U+002D.
 
-#### 1.2.3.2 Font Colors and Style
+### 1.3.2 Font Colors and Style
 
 The following color, font and font style conventions are used in this document:
 
