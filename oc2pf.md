@@ -185,6 +185,19 @@ _This section is normative._
 
 ### 1.2.2 Acronyms and Abbreviations
 
+| Acronym | Expansion                            |
+|:-------:|--------------------------------------|
+| AP      | Actuator Profile                     |
+| IANA    | Internet Assigned Numbers Authority  |
+| ICMP    | Internet Control Message Protocol    |
+| IP      | Internet Protocol                    |
+| JADN    | JSON Abstract Data Notation          |
+| JSON    | Javascript Object Notation           |
+| PF      | Packet Filtering                     |
+| SCTP    | Stream Control Transmission Protocol |
+| TCP     | Transmission Control Protocol        |
+| UDP     | User Datagram Protocol               |
+
 ## 1.3 Document Conventions
 
 ### 1.3.1 Naming Conventions
