@@ -5,9 +5,9 @@
 
 # OpenC2 Actuator Profile for Packet Filtering Version 1.0
 
-## Working Draft 02
+## Working Draft 03
 
-## 24 July 2024
+## 08 August 2024
 
 &nbsp;
 
@@ -34,6 +34,10 @@ Michael Rosa (mjrosa@cyber.nsa.gov), [National Security Agency](https://www.nsa.
 #### Editors:
 Alex Everett (alex.everett@unc.edu), [University of North Carolina, Chapel Hill](https://www.unc.edu/) \
 Vasileios Mavroeidis (vasileim@ifi.uio.no), [University of Oslo](https://www.uio.no/english/)
+
+#### Additional artifacts:
+This prose specification is one component of a Work Product that also includes:
+* JADN schema: schemas/pf-ap.jadn
 
 #### Abstract:
 
