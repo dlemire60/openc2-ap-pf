@@ -185,6 +185,8 @@ _This section is normative._
 
 ### 1.2.2 Acronyms and Abbreviations
 
+_This section is non-normative._
+
 | Acronym | Expansion                            |
 |:-------:|--------------------------------------|
 | AP      | Actuator Profile                     |
