@@ -5,9 +5,9 @@
 
 # OpenC2 Actuator Profile for Packet Filtering Version 1.0
 
-## Working Draft 02
+## Working Draft 03
 
-## 24 July 2024
+## 08 August 2024
 
 &nbsp;
 
@@ -34,6 +34,10 @@ Michael Rosa (mjrosa@cyber.nsa.gov), [National Security Agency](https://www.nsa.
 #### Editors:
 Alex Everett (alex.everett@unc.edu), [University of North Carolina, Chapel Hill](https://www.unc.edu/) \
 Vasileios Mavroeidis (vasileim@ifi.uio.no), [University of Oslo](https://www.uio.no/english/)
+
+#### Additional artifacts:
+This prose specification is one component of a Work Product that also includes:
+* JADN schema: schemas/pf-ap.jadn
 
 #### Abstract:
 
@@ -69,90 +73,65 @@ For complete copyright information please see the Notices section in the Appendi
 -------
 
 # Table of Contents
--   [1 Introduction](#1-introduction)
-    -   [1.1 IPR Policy](#11-ipr-policy)
-    -   [1.2 Terminology](#12-terminology)
-    -   [1.3 Document Conventions](#13-document-conventions)
-        -   [1.3.1 Naming Conventions](#131-naming-conventions)
-        -   [1.3.2 Font Colors and Style](#132-font-colors-and-style)
--   [2 OpenC2 Language Binding](#2-openc2-language-binding)
-    -   [2.1 OpenC2 Command Components](#21-openc2-command-components)
-        -   [2.1.1 Actions](#211-actions)
-        -   [2.1.2 Targets](#212-targets)
-        -   [2.1.3 Command Arguments](#213-command-arguments)
-        -   [2.1.4 Actuator Specifiers](#214-actuator-specifiers)
-    -   [2.2 OpenC2 Response Components](#22-openc2-response-components)
-        -   [2.2.1 Response Results](#221-response-results)
-        -   [2.2.2 Response Status Codes](#222-response-status-codes)
-    -   [2.3 OpenC2 Commands](#23-openc2-commands)
-        -   [2.3.1 Allow](#231-allow)
-        -   [2.3.2 Deny](#232-deny)
-        -   [2.3.3 Query](#233-query)
-        -   [2.3.4 Delete](#234-delete)
-        -   [2.3.5 Update](#235-update)
--   [3 Conformance Statements](#3-conformance-statements)
-    -   [3.1 Clauses Pertaining to the OpenC2 Producer Conformance
-        Target](#31-clauses-pertaining-to-the-openc2-producer-conformance-target)
-        -   [3.1.1 Conformance Clause 1: Baseline OpenC2 Producer](#311-conformance-clause-1-baseline-openc2-producer)
-        -   [3.1.2 Conformance Clause 2: IP Version 4 Connection Producer](#312-conformance-clause-2-ip-version-4-connection-producer)
-        -   [3.1.3 Conformance Clause 3: IP Version 6 Connection Producer](#313-conformance-clause-3-ip-version-6-connection-producer)
-        -   [3.1.4 Conformance Clause 4: IP Version 4 Net Producer](#314-conformance-clause-4-ip-version-4-net-producer)
-        -   [3.1.5 Conformance Clause 5: IP Version 6 Net Producer](#315-conformance-clause-5-ip-version-6-net-producer)
-        -   [3.1.6 Conformance Clause 6: Domain Name Producer](#316-conformance-clause-6-domain-name-producer)
-        -   [3.1.7 Conformance Clause 7: Advanced Connection Producer](#317-conformance-clause-7-advanced-connection-producer)
-        -   [3.1.8 Conformance Clause 8: Update File Producer](#318-conformance-clause-8-update-file-producer)   
-        -   [3.1.9 Conformance Clause 9: Delete Rule Number Producer](#319-conformance-clause-9-delete-rule-number-producer) 
-        -   [3.1.10 Conformance Clause 10: Query Rule Number Producer](#3110-conformance-clause-10-query-rule-number-producer)
-        -   [3.1.11 Conformance Clause 11: Persistent Producer](#3111-conformance-clause-11-persistent-producer) 
-        -   [3.1.12 Conformance Clause 12: Direction Producer](#3112-conformance-clause-12-direction-producer)     
-        -   [3.1.13 Conformance Clause 13: Drop Process Producer](#3113-conformance-clause-13-drop-process-producer)
-        -   [3.1.14 Conformance Clause 14: Temporal Producer](#3114-conformance-clause-14-temporal-producer)
-        -   [3.1.15 Conformance Clause 15: Logging Producer](#3115-conformance-clause-15-logging-producer)
-        -   [3.1.16 Conformance Clause 16: Stateful Producer](#3116-conformance-clause-16-stateful-producer)
-        -   [3.1.17 Conformance Clause 17: Priority Producer](#3117-conformance-clause-17-priority-producer)
-        -   [3.1.18 Conformance Clause 18: Insert Rule Producer](#3118-conformance-clause-18-insert-rule-producer)
-    -   [3.2 Clauses Pertaining to the OpenC2 Consumer Conformance
-        Target](#32-clauses-pertaining-to-the-openc2-consumer-conformance-target)
-        -   [3.2.1 Conformance Clause 19: Baseline OpenC2 Consumer](#321-conformance-clause-19-baseline-openc2-consumer)
-        -   [3.2.2 Conformance Clause 20: IP Version 4 Connection Consumer](#322-conformance-clause-20-ip-version-4-connection-consumer)
-        -   [3.2.3 Conformance Clause 21: IP Version 6 Connection Consumer](#323-conformance-clause-21-ip-version-6-connection-consumer)
-        -   [3.2.4 Conformance Clause 22: IP Version 4 Net Consumer](#324-conformance-clause-22-ip-version-4-net-consumer)
-        -   [3.2.5 Conformance Clause 23: IP Version 6 Net Consumer](#325-conformance-clause-23-ip-version-6-net-consumer)
-        -   [3.2.6 Conformance Clause 24: Domain Name Consumer](#326-conformance-clause-24-domain-name-consumer)
-        -   [3.2.7 Conformance Clause 25: Advanced Connection Consumer](#327-conformance-clause-25-advanced-connection-consumer)
-        -   [3.2.8 Conformance Clause 26: Update File Consumer](#328-conformance-clause-26-update-file-consumer)   
-        -   [3.2.9 Conformance Clause 27: Delete Rule Number Consumer](#329-conformance-clause-27-delete-rule-number-consumer) 
-        -   [3.2.10 Conformance Clause 28: Query Rule Number Consumer](#3210-conformance-clause-28-query-rule-number-consumer)
-        -   [3.2.11 Conformance Clause 29: Persistent Consumer](#3211-conformance-clause-29-persistent-consumer) 
-        -   [3.2.12 Conformance Clause 30: Direction Consumer](#3212-conformance-clause-30-direction-consumer)     
-        -   [3.2.13 Conformance Clause 31: Drop Process Consumer](#3213-conformance-clause-31-drop-process-consumer)
-        -   [3.2.14 Conformance Clause 32: Temporal Consumer](#3214-conformance-clause-32-temporal-consumer)
-        -   [3.2.15 Conformance Clause 33: Logging Consumer](#3215-conformance-clause-33-logging-consumer)
-        -   [3.2.16 Conformance Clause 34: Stateful Consumer](#3216-conformance-clause-34-stateful-consumer)
-        -   [3.2.17 Conformance Clause 35: Priority Consumer](#3217-conformance-clause-35-priority-consumer)
-        -   [3.2.18 Conformance Clause 36: Insert Rule Consumer](#3218-conformance-clause-36-insert-rule-consumer)
--   [Appendix A. References](#appendix-a-references)
-    -   [A.1 Normative References](#a1-normative-references)
-    -   [A.2 Informative References](#a2-informative-references)
--   [Appendix B. Safety, Security and Privacy Considerations](#appendix-b-safety-security-and-privacy-considerations)
--   [Appendix C. Acknowledgments](#appendix-c-acknowledgments)
--   [Appendix D. Revision History](#appendix-d-revision-history)
--   [Appendix E. Sample Commands](#appendix-e-sample-commands)
-    -   [E.1 Deny and Allow](#e1-deny-and-allow)
-         -   [E.1.1 Deny a particular connection](#e11-deny-a-particular-connection)
-         -   [E.1.2 Deny all outbound ftp transfers](#e12-deny-all-outbound-ftp-transfers)
-         -   [E.1.3 Block all inbound traffic from a particular source](#e13-block-all-inbound-traffic-from-a-particular-source)
-         -   [E.1.4 Statefully permit ftp transfers to a particular destination](#e14-statefully-permit-ftp-transfers-to-a-particular-destination)
-         -   [E.1.5 Deny outbound Network Time Protocol (NTP)](#e15-deny-outbound-network-time-protocol-ntp)
-    -   [E.2 Delete rule](#e2-delete-rule)
-    -   [E.3 Update file](#e3-update-file)
-    -   [E.4 Query features](#e4-query-features)
-         -   [E.4.1 No features specified](#e41-no-features-specified)
-         -   [E.4.2 Version of OpenC2 Language Specification supported](#e42-version-of-openc2-language-specification-supported)
-         -   [E.4.3 Actuator profiles supported](#e43-actuator-profiles-supported)
-         -   [A.4.4 Specific Commands supported](#e44-specific-commands-supported)
-         -   [A.4.5 Rule details](#e45-rule-details)
--   [Appendix F. Notices](#appendix-f-notices)
+- [1 Introduction](#1-introduction)
+  - [1.1 Changes from Earlier Versions](#11-changes-from-earlier-versions)
+  - [1.2 Glossary](#12-glossary)
+    - [1.2.1 Definition of Terms](#121-definition-of-terms)
+    - [1.2.2 Acronyms and Abbreviations](#122-acronyms-and-abbreviations)
+  - [1.3 Document Conventions](#13-document-conventions)
+    - [1.3.1 Naming Conventions](#131-naming-conventions)
+    - [1.3.2 Font Colors and Style](#132-font-colors-and-style)
+    - [1.3.3 Schema](#133-schema)
+- [2 OpenC2 Language Binding](#2-openc2-language-binding)
+  - [2.1 OpenC2 Command Components](#21-openc2-command-components)
+    - [2.1.1 Actions](#211-actions)
+    - [2.1.2 Targets](#212-targets)
+    - [2.1.3 Command Arguments](#213-command-arguments)
+    - [2.1.4 Actuator Specifiers](#214-actuator-specifiers)
+  - [2.2 OpenC2 Response Components](#22-openc2-response-components)
+    - [2.2.1 Response Results](#221-response-results)
+    - [2.2.2 Response Status Codes](#222-response-status-codes)
+  - [2.3 OpenC2 Commands](#23-openc2-commands)
+    - [2.3.1 Allow](#231-allow)
+      - [2.3.1.1 'Allow ipv4\_connection'](#2311-allow-ipv4_connection)
+      - [2.3.1.2 'Allow ipv6\_connection'](#2312-allow-ipv6_connection)
+      - [2.3.1.3 'Allow ipv4\_net'](#2313-allow-ipv4_net)
+      - [2.3.1.4 'Allow ipv6\_net'](#2314-allow-ipv6_net)
+      - [2.3.1.5 'Allow domain\_name'](#2315-allow-domain_name)
+      - [2.3.1.6 'Allow advanced\_connection'](#2316-allow-advanced_connection)
+    - [2.3.2 Deny](#232-deny)
+    - [2.3.3 Query](#233-query)
+      - [2.3.3.1 'Query features'](#2331-query-features)
+      - [2.3.3.2 'Query pf:rule\_number'](#2332-query-pfrule_number)
+    - [2.3.4 Delete](#234-delete)
+      - [2.3.4.1 'Delete pf:rule\_number'](#2341-delete-pfrule_number)
+    - [2.3.5 Update](#235-update)
+      - [2.3.5.1 'Update file'](#2351-update-file)
+- [3 Conformance Statements](#3-conformance-statements)
+  - [3.1 Clauses Pertaining to the OpenC2 Producer Conformance Target](#31-clauses-pertaining-to-the-openc2-producer-conformance-target)
+  - [3.2 Clauses Pertaining to the OpenC2 Consumer Conformance Target](#32-clauses-pertaining-to-the-openc2-consumer-conformance-target)
+- [Appendix A. References](#appendix-a-references)
+  - [A.1 Normative References](#a1-normative-references)
+  - [A.2 Informative References](#a2-informative-references)
+- [Appendix B. Safety, Security and Privacy Considerations](#appendix-b-safety-security-and-privacy-considerations)
+- [Appendix C. Acknowledgments](#appendix-c-acknowledgments)
+- [Appendix D. Revision History](#appendix-d-revision-history)
+- [Appendix E. Sample Commands](#appendix-e-sample-commands)
+  - [E.1 Deny and Allow](#e1-deny-and-allow)
+    - [E.1.1 Deny a particular connection](#e11-deny-a-particular-connection)
+    - [E.1.2 Deny all outbound ftp transfers](#e12-deny-all-outbound-ftp-transfers)
+    - [E.1.3 Block all inbound traffic from a particular source](#e13-block-all-inbound-traffic-from-a-particular-source)
+    - [E.1.4 Statefully permit ftp transfers to a particular destination](#e14-statefully-permit-ftp-transfers-to-a-particular-destination)
+    - [E.1.5 Deny outbound Network Time Protocol (NTP)](#e15-deny-outbound-network-time-protocol-ntp)
+  - [E.2 Delete Rule](#e2-delete-rule)
+  - [E.3 Update file](#e3-update-file)
+  - [E.4 Query features](#e4-query-features)
+    - [E.4.1 No query items set](#e41-no-query-items-set)
+    - [E.4.2 Version of Language specification supported](#e42-version-of-language-specification-supported)
+    - [E.4.3 Actuator profiles supported](#e43-actuator-profiles-supported)
+    - [E.4.4 Specific Commands Supported](#e44-specific-commands-supported)
+    - [E.4.5 Rule Details](#e45-rule-details)
+- [Appendix F. Notices](#appendix-f-notices)
 
 -------
 
@@ -206,16 +185,31 @@ _This section is normative._
 
 ### 1.2.2 Acronyms and Abbreviations
 
-### 1.2.3 Document Conventions
+_This section is non-normative._
 
-#### 1.2.3.1 Naming Conventions
+| Acronym | Expansion                            |
+|:-------:|--------------------------------------|
+| AP      | Actuator Profile                     |
+| IANA    | Internet Assigned Numbers Authority  |
+| ICMP    | Internet Control Message Protocol    |
+| IP      | Internet Protocol                    |
+| JADN    | JSON Abstract Data Notation          |
+| JSON    | Javascript Object Notation           |
+| PF      | Packet Filtering                     |
+| SCTP    | Stream Control Transmission Protocol |
+| TCP     | Transmission Control Protocol        |
+| UDP     | User Datagram Protocol               |
+
+## 1.3 Document Conventions
+
+### 1.3.1 Naming Conventions
 
 * [[RFC2119]](#rfc2119)/[[RFC8174]](#rfc8174) key words are in all uppercase.
 * All property names and literals are in lowercase, except when referencing canonical names defined in another standard (e.g., literal values from an IANA registry).
 * Words in property names are separated with an underscore (_), while words in string enumerations and type names are separated with a hyphen (-).
 * The term "hyphen" used here refers to the ASCII hyphen or minus character, which in Unicode is "hyphen-minus", U+002D.
 
-#### 1.2.3.2 Font Colors and Style
+### 1.3.2 Font Colors and Style
 
 The following color, font and font style conventions are used in this document:
 
@@ -238,6 +232,13 @@ Example:
     }
 }
 ~~~
+
+### 1.3.3 Schema
+
+The schema for this AP is defined using a [[JSON Abstract Data Notation
+(JADN)](#jadn-v10)] information model. The property tables in this document were
+generated programmatically from the JADN schema for consistency.
+
 
 # 2 OpenC2 Language Binding
 
@@ -273,13 +274,15 @@ Table 2.1.1-1 presents the Actions defined in Version 1.0 of the [OpenC2 Languag
 
 **_Type: Action (Enumerated)_**
 
-| ID | Name | Description |
-| :--- | :--- | :--- |
-| 3 | **query** | Initiate a request for information. Used to communicate the supported options and determine the state or settings of the Actuator. |
-| 6 | **deny** | Prevent traffic or access. |
-| 8 | **allow** | Permit traffic or access. |
-| 16 | **update** | Instruct the Actuator to update its configuration by retrieving and processing a configuration file. |
-| 20 | **delete** | Remove an access rule. |
+**_Type: Actions (Enumerated)_**
+
+| ID | Name       | Description                                                                                                                        |
+|---:|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------|
+|  3 | **query**  | Initiate a request for information. Used to communicate the supported options and determine the state or settings of the Actuator. |
+|  6 | **deny**   | Prevent traffic or access                                                                                                          |
+|  8 | **allow**  | Permit traffic or access                                                                                                           |
+| 16 | **update** | Instruct the Actuator to update its configuration by retrieving and processing a configuration file                                |
+| 20 | **delete** | Remove an access rule.                                                                                                             |
 
 ### 2.1.2 Targets
 Table 2.1.2-1 lists the Targets defined in Version 1.0 of the [OpenC2 Language Specification](#openc2-lang-v10) that are applicable to PF. Table 2.1.2-2 extends the list of common Targets and includes additional Targets unique to PF. Targets that are defined in this profile (see Table 2.1.2-2) are referenced with the `pf` namespace identifier.
@@ -288,15 +291,16 @@ Table 2.1.2-1 lists the Targets defined in Version 1.0 of the [OpenC2 Language S
 
 **_Type: Target (Choice)_**
 
-| ID | Name | Type | Description |
-| :--- | :--- | :--- | :--- |
-| 9 | **features** | Feature | A set of items such as Action/Target pairs, profiles versions, options that are supported by the Actuator. The Target is used with the query Action to determine an Actuator's capabilities. |
-| 10 | **file** | File | Properties of a file. |
-| 13 | **ipv4_net** | IPv4-Net | The representation of one or a block of IPv4 addresses expressed using CIDR notation. |
-| 14 | **ipv6_net** | IPv6-Net | The representation of one or a block of IPv6 addresses expressed using CIDR notation. |
-| 15 | **ipv4_connection** | IPv4-Connection | A network connection as specified by a five-tuple (IPv4). |
-| 16 | **ipv6_connection** | IPv6-Connection | A network connection as specified by a five-tuple (IPv6). |
-| 17 | **domain_name** | Domain-Name | A domain name as defined in [[RFC1034]](#rfc1034). |
+|   ID | Name                | Type               | # | Description                                                                                                                                                                                  |
+|-----:|:--------------------|:-------------------|--:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|    9 | **features**        | ls:Feature         | 1 | A set of items such as Action/Target pairs, profiles versions, options that are supported by the Actuator. The Target is used with the query Action to determine an Actuator's capabilities. |
+|   10 | **file**            | ls:File            | 1 | Properties of a file.                                                                                                                                                                        |
+|   13 | **ipv4_net**        | ls:IPv4-Net        | 1 | The representation of one or a block of IPv4 addresses expressed using CIDR notation.                                                                                                        |
+|   14 | **ipv6_net**        | ls:IPv6-Net        | 1 | The representation of one or a block of IPv6 addresses expressed using CIDR notation.                                                                                                        |
+|   15 | **ipv4_connection** | ls:IPv4-Connection | 1 | A network connection as specified by a five-tuple (IPv4).                                                                                                                                    |
+|   16 | **ipv6_connection** | ls:IPv6-Connection | 1 | A network connection as specified by a five-tuple (IPv6).                                                                                                                                    |
+|   17 | **domain_name**     | ls:Domain-Name     | 1 | A domain name as defined in [RFC1034].                                                                                                                                                       |
+| 1034 | **pf**              | String             | 1 |                                                                                                                                                                                              |
 
 Usage Requirements:
 * ipv4_connection
@@ -312,32 +316,31 @@ Usage Requirements:
 
 **Table 2.1.2-2 Targets Unique to PF**
 
-**_Type: Target (Choice)_**
+**_Type: PF-Target (Choice)_**
 
-|   ID | Name               | Type                | Description                                                                                                                                           |
-|-----:|:-------------------|:--------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
-|   1  | **rule_number**    | Rule-ID             | Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule. |
-|   2  | **adv_connection** | Advanced-Connection | Advanced connection type to support application layer firewalls                                                                                       |
+|   ID | Name               | Type                | # | Description                                                                                                                                           |
+|-----:|:-------------------|:--------------------|--:|:------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1 | **rule_number**    | Rule-ID             | 1 | Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule. |
+| 2 | **adv_connection** | Advanced-Connection | 1 | Advanced connection type to support application layer firewalls                                                                                       |
 
 **2.1.2.1 Data Type Definitions**
 
-**_Type: Rule-ID_**
+| Type Name   | Type Definition | Description |
+|:------------|:----------------|:------------|
+| **Rule-ID** | Integer{0..*}   |             |
 
-| Type Name | Type | Description |
-| :--- | :--- | :--- |
-| **Rule-ID** | Integer | Access control list rule identifier. |
 
 **_Type: Advanced-Connection (Record)_**
 
-| ID | Name            | Type           |  #   | Description                                                                              |
-|---:|:----------------|:---------------|-----:|:-----------------------------------------------------------------------------------------|
-|  1 | **src_addr**    | Adv-Addr       | 0..1 | Source address range, one of IPv4, IPv6, or network tag                                  |
-|  2 | **src_port**    | ls:Port        | 0..1 | Source service per [[RFC6335]](#rfc6335)                                                 |
-|  3 | **dst_addr**    | Adv-Addr       | 0..1 | Destination address range, one of IPv4, IPv6, or network tag                             |
-|  4 | **dst_port**    | ls:Port        | 0..1 | Destination service per [[RFC6335]](#rfc6335)                                            |
-|  5 | **protocol**    | ls:L4-Protocol | 0..1 | Layer 4 protocol (e.g., TCP) - see Section 3.4.2.11 of the OpenC2 Language Specification |
-|  6 | **network**     | String         | 0..1 | Reference to the name (also known as tag) of logical network to which the rule applies   |
-|  7 | **application** | String         | 0..1 | Reference to the name of the application to which the rule applies                       |
+| ID | Name            | Type           | # | Description                                                                              |
+|---:|:----------------|:---------------|--:|:-----------------------------------------------------------------------------------------|
+|  1 | **src_addr**    | Adv-Addr       | 1 | Source address range, one of IPv4, IPv6, or network tag                                  |
+|  2 | **src_port**    | ls:Port        | 1 | Source service per [[RFC6335]](#rfc6335)                                                 |
+|  3 | **dst_addr**    | Adv-Addr       | 1 | Destination address range, one of IPv4, IPv6, or network tag                             |
+|  4 | **dst_port**    | ls:Port        | 1 | Destination service per [[RFC6335]](#rfc6335)                                            |
+|  5 | **protocol**    | ls:L4-Protocol | 1 | Layer 4 protocol (e.g., TCP) - see Section 3.4.2.11 of the OpenC2 Language Specification |
+|  6 | **network**     | String         | 1 | Reference to the name (also known as tag) of logical network to which the rule applies   |
+|  7 | **application** | String         | 1 | Reference to the name of the application to which the rule applies                       |
 
 Usage Requirements:
 * advanced_connection
@@ -354,11 +357,11 @@ Usage Requirements:
 
 **_Type: Adv-Addr (Choice)_**
 
-| ID | Name        | Type        | Description                                                        |
-|---:|:------------|:------------|:-------------------------------------------------------------------|
-|  1 | **v4addr**  | ls:IPv4-Net | IPv4 CIDR block address as defined in the OpenC2 LS                |
-|  2 | **v6addr**  | ls:IPv6-Net | IPv6 "CIDR block" address as defined in the OpenC2 LS              |
-|  3 | **net_tag** | String      | A network  name, e.g., as used in cloud system network definitions |
+| ID | Name        | Type        | # | Description                                                        |
+|---:|:------------|:------------|--:|:-------------------------------------------------------------------|
+|  1 | **v4addr**  | ls:IPv4-Net | 1 | IPv4 CIDR block address as defined in the OpenC2 LS                |
+|  2 | **v6addr**  | ls:IPv6-Net | 1 | IPv6 "CIDR block" address as defined in the OpenC2 LS              |
+|  3 | **net_tag** | String      | 1 | A network  name, e.g., as used in cloud system network definitions |
 
 
 
@@ -367,18 +370,20 @@ Arguments provide additional precision to a Command by including information suc
 
 **Table 2.1.3-1 Common Command Arguments Applicable to PF**
 
-**_Type: Args (Map)_**
+**_Type: Args (Map{1..*})_**
 
-| ID | Name | Type | # | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| 1 | **start_time** | Date-Time | 0..1 | The specific date/time to initiate the Command. |
-| 2 | **stop_time** | Date-Time | 0..1 | The specific date/time to terminate the Command.|
-| 3 | **duration** | Duration | 0..1 | The length of time for a Command to be in effect. |
-| 4 | **response_requested** | Response-Type | 0..1 | The type of Response required for the Command: `none`, `ack`, `status`, `complete`. |
+|   ID | Name                   | Type             | # | Description                                       |
+|-----:|:-----------------------|:-----------------|--:|:--------------------------------------------------|
+|    1 | **start_time**         | ls:Date-Time     | 1 | The specific date/time to initiate the Command.   |
+|    2 | **stop_time**          | ls:Date-Time     | 1 | The specific date/time to terminate the Command.  |
+|    3 | **duration**           | ls:Duration      | 1 |                                                   |
+|    4 | **response_requested** | ls:Response-Type | 1 |                                                   |
+| 1034 | **pf**                 | PF-ARgs          | 1 |                                                   |
+
 
 **Table 2.1.3-2 Command Arguments Unique to PF**
 
-**_Type: Args (Map)_**
+**_Type: PF-Args (Map{1..*})_**
 
 |   ID | Name             | Type          | # | Description                                                                                                                                                                                                   |
 |-----:|:-----------------|:--------------|--:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -416,19 +421,19 @@ Note that direction is required by some packet filters. For a host-based or host
 
 **_Type: Drop-Process (Enumerated)_**
 
-| ID | Name | Description |
-| :--- | :--- | :--- |
-| 1 | **none** | Drop the packet and do not send a notification to the source of the packet. |
-| 2 | **reject** | Drop the packet and send an ICMP host unreachable (or equivalent) to the source of the packet. |
-| 3 | **false_ack** | Drop the traffic and send a false acknowledgment. |
+| ID | Name          | Description                                                                                    |
+|---:|:--------------|:-----------------------------------------------------------------------------------------------|
+|  1 | **none**      | Drop the packet and do not send a notification to the source of the packet.                    |
+|  2 | **reject**    | Drop the packet and send an ICMP host unreachable (or equivalent) to the source of the packet. |
+|  3 | **false_ack** | Drop the traffic and send a false acknowledgment.                                              |
 
 **_Type: Direction (Enumerated)_**
 
-| ID | Name | Description |
-| :--- | :--- | :--- |
-| 1 | **both** | Apply rules to all traffic. |
-| 2 | **ingress** | Apply rules to incoming traffic only. |
-| 3 | **egress** | Apply rules to outgoing traffic only. |
+| ID | Name        | Description                           |
+|---:|:------------|:--------------------------------------|
+|  1 | **both**    | Apply rules to all traffic.           |
+|  2 | **ingress** | Apply rules to incoming traffic only. |
+|  3 | **egress**  | Apply rules to outgoing traffic only. |
 
 
 
@@ -471,11 +476,11 @@ Table 2.2.1-1 lists the Response Results properties defined in Version 1.0 of th
 
 **Table 2.2.1-2 Response Results Unique to PF**
 
-**_Type: Results (Map)_**
+**_Type: PF-Results (Map{1..*})_**
 
-| ID | Name | Type | Description |
-| :--- | :--- | :--- | :--- |
-|  1 | **rule_number** | Rule-ID | Rule identifier returned from allow or deny Command. |
+| ID | Name            | Type    | # | Description                                          |
+|---:|:----------------|:--------|--:|:-----------------------------------------------------|
+|  1 | **rule_number** | Rule-ID | 1 | Rule identifier returned from allow or deny Command. |
 
 ### 2.2.2 Response Status Codes
 Table 2.2.2-1 lists the Response Status Codes defined in Version 1.0 of the [OpenC2 Language Specification](#openc2-lang-v10) that are applicable to PF.
@@ -1025,6 +1030,11 @@ While any hyperlinks included in this appendix were valid at the time of publica
 ## A.1 Normative References
 
 The following documents are referenced in such a way that some or all of their content constitutes requirements of this document.
+
+###### [JADN-v1.0]
+_JSON Abstract Data Notation Version 1.0_. Edited by David Kemp. 17 August 2021. 
+OASIS Committee Specification 01. https://docs.oasis-open.org/openc2/jadn/v1.0/cs01/jadn-v1.0-cs01.html. 
+Latest stage: https://docs.oasis-open.org/openc2/jadn/v1.0/jadn-v1.0.html.
 
 ###### [RFC1034]
 

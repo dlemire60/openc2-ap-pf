@@ -8,28 +8,9 @@
 |  **namespaces:** | **ls**: http://oasis-open.org/openc2/oc2ls-types/v1.1                                        |
 |     **exports:** | PF-Target, PF-Args                                                                           |
 
-**_Type: Actions (Enumerated)_**
 
-| ID | Name       | Description                                                                                                                        |
-|---:|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------|
-|  3 | **query**  | Initiate a request for information. Used to communicate the supported options and determine the state or settings of the Actuator. |
-|  6 | **deny**   | Prevent traffic or access                                                                                                          |
-|  8 | **allow**  | Permit traffic or access                                                                                                           |
-| 16 | **update** | Instruct the Actuator to update its configuration by retrieving and processing a configuration file                                |
-| 20 | **delete** | Remove an access rule.                                                                                                             |
 
-**_Type: Target (Choice)_**
 
-|   ID | Name                | Type               | # | Description                                                                                                                                                                                  |
-|-----:|:--------------------|:-------------------|--:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|    9 | **features**        | ls:Feature         | 1 | A set of items such as Action/Target pairs, profiles versions, options that are supported by the Actuator. The Target is used with the query Action to determine an Actuator's capabilities. |
-|   10 | **file**            | ls:File            | 1 | Properties of a file.                                                                                                                                                                        |
-|   13 | **ipv4_net**        | ls:IPv4-Net        | 1 | The representation of one or a block of IPv4 addresses expressed using CIDR notation.                                                                                                        |
-|   14 | **ipv6_net**        | ls:IPv6-Net        | 1 | The representation of one or a block of IPv6 addresses expressed using CIDR notation.                                                                                                        |
-|   15 | **ipv4_connection** | ls:IPv4-Connection | 1 | A network connection as specified by a five-tuple (IPv4).                                                                                                                                    |
-|   16 | **ipv6_connection** | ls:IPv6-Connection | 1 | A network connection as specified by a five-tuple (IPv6).                                                                                                                                    |
-|   17 | **domain_name**     | ls:Domain-Name     | 1 | A domain name as defined in [RFC1034].                                                                                                                                                       |
-| 1034 | **pf**              | String             | 1 |                                                                                                                                                                                              |
 
 **_Type: Pairs (Enumerated)_**
 
