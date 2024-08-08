@@ -284,13 +284,15 @@ Table 2.1.1-1 presents the Actions defined in Version 1.0 of the [OpenC2 Languag
 
 **_Type: Action (Enumerated)_**
 
-| ID | Name | Description |
-| :--- | :--- | :--- |
-| 3 | **query** | Initiate a request for information. Used to communicate the supported options and determine the state or settings of the Actuator. |
-| 6 | **deny** | Prevent traffic or access. |
-| 8 | **allow** | Permit traffic or access. |
-| 16 | **update** | Instruct the Actuator to update its configuration by retrieving and processing a configuration file. |
-| 20 | **delete** | Remove an access rule. |
+**_Type: Actions (Enumerated)_**
+
+| ID | Name       | Description                                                                                                                        |
+|---:|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------|
+|  3 | **query**  | Initiate a request for information. Used to communicate the supported options and determine the state or settings of the Actuator. |
+|  6 | **deny**   | Prevent traffic or access                                                                                                          |
+|  8 | **allow**  | Permit traffic or access                                                                                                           |
+| 16 | **update** | Instruct the Actuator to update its configuration by retrieving and processing a configuration file                                |
+| 20 | **delete** | Remove an access rule.                                                                                                             |
 
 ### 2.1.2 Targets
 Table 2.1.2-1 lists the Targets defined in Version 1.0 of the [OpenC2 Language Specification](#openc2-lang-v10) that are applicable to PF. Table 2.1.2-2 extends the list of common Targets and includes additional Targets unique to PF. Targets that are defined in this profile (see Table 2.1.2-2) are referenced with the `pf` namespace identifier.
@@ -299,15 +301,16 @@ Table 2.1.2-1 lists the Targets defined in Version 1.0 of the [OpenC2 Language S
 
 **_Type: Target (Choice)_**
 
-| ID | Name | Type | Description |
-| :--- | :--- | :--- | :--- |
-| 9 | **features** | Feature | A set of items such as Action/Target pairs, profiles versions, options that are supported by the Actuator. The Target is used with the query Action to determine an Actuator's capabilities. |
-| 10 | **file** | File | Properties of a file. |
-| 13 | **ipv4_net** | IPv4-Net | The representation of one or a block of IPv4 addresses expressed using CIDR notation. |
-| 14 | **ipv6_net** | IPv6-Net | The representation of one or a block of IPv6 addresses expressed using CIDR notation. |
-| 15 | **ipv4_connection** | IPv4-Connection | A network connection as specified by a five-tuple (IPv4). |
-| 16 | **ipv6_connection** | IPv6-Connection | A network connection as specified by a five-tuple (IPv6). |
-| 17 | **domain_name** | Domain-Name | A domain name as defined in [[RFC1034]](#rfc1034). |
+|   ID | Name                | Type               | # | Description                                                                                                                                                                                  |
+|-----:|:--------------------|:-------------------|--:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|    9 | **features**        | ls:Feature         | 1 | A set of items such as Action/Target pairs, profiles versions, options that are supported by the Actuator. The Target is used with the query Action to determine an Actuator's capabilities. |
+|   10 | **file**            | ls:File            | 1 | Properties of a file.                                                                                                                                                                        |
+|   13 | **ipv4_net**        | ls:IPv4-Net        | 1 | The representation of one or a block of IPv4 addresses expressed using CIDR notation.                                                                                                        |
+|   14 | **ipv6_net**        | ls:IPv6-Net        | 1 | The representation of one or a block of IPv6 addresses expressed using CIDR notation.                                                                                                        |
+|   15 | **ipv4_connection** | ls:IPv4-Connection | 1 | A network connection as specified by a five-tuple (IPv4).                                                                                                                                    |
+|   16 | **ipv6_connection** | ls:IPv6-Connection | 1 | A network connection as specified by a five-tuple (IPv6).                                                                                                                                    |
+|   17 | **domain_name**     | ls:Domain-Name     | 1 | A domain name as defined in [RFC1034].                                                                                                                                                       |
+| 1034 | **pf**              | String             | 1 |                                                                                                                                                                                              |
 
 Usage Requirements:
 * ipv4_connection
@@ -323,32 +326,31 @@ Usage Requirements:
 
 **Table 2.1.2-2 Targets Unique to PF**
 
-**_Type: Target (Choice)_**
+**_Type: PF-Target (Choice)_**
 
-|   ID | Name               | Type                | Description                                                                                                                                           |
-|-----:|:-------------------|:--------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
-|   1  | **rule_number**    | Rule-ID             | Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule. |
-|   2  | **adv_connection** | Advanced-Connection | Advanced connection type to support application layer firewalls                                                                                       |
+|   ID | Name               | Type                | # | Description                                                                                                                                           |
+|-----:|:-------------------|:--------------------|--:|:------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1 | **rule_number**    | Rule-ID             | 1 | Immutable identifier assigned when a packet filtering rule is created. Identifies the rule to be deleted or used to request information about a rule. |
+| 2 | **adv_connection** | Advanced-Connection | 1 | Advanced connection type to support application layer firewalls                                                                                       |
 
 **2.1.2.1 Data Type Definitions**
 
-**_Type: Rule-ID_**
+| Type Name   | Type Definition | Description |
+|:------------|:----------------|:------------|
+| **Rule-ID** | Integer{0..*}   |             |
 
-| Type Name | Type | Description |
-| :--- | :--- | :--- |
-| **Rule-ID** | Integer | Access control list rule identifier. |
 
 **_Type: Advanced-Connection (Record)_**
 
-| ID | Name            | Type           |  #   | Description                                                                              |
-|---:|:----------------|:---------------|-----:|:-----------------------------------------------------------------------------------------|
-|  1 | **src_addr**    | Adv-Addr       | 0..1 | Source address range, one of IPv4, IPv6, or network tag                                  |
-|  2 | **src_port**    | ls:Port        | 0..1 | Source service per [[RFC6335]](#rfc6335)                                                 |
-|  3 | **dst_addr**    | Adv-Addr       | 0..1 | Destination address range, one of IPv4, IPv6, or network tag                             |
-|  4 | **dst_port**    | ls:Port        | 0..1 | Destination service per [[RFC6335]](#rfc6335)                                            |
-|  5 | **protocol**    | ls:L4-Protocol | 0..1 | Layer 4 protocol (e.g., TCP) - see Section 3.4.2.11 of the OpenC2 Language Specification |
-|  6 | **network**     | String         | 0..1 | Reference to the name (also known as tag) of logical network to which the rule applies   |
-|  7 | **application** | String         | 0..1 | Reference to the name of the application to which the rule applies                       |
+| ID | Name            | Type           | # | Description                                                                              |
+|---:|:----------------|:---------------|--:|:-----------------------------------------------------------------------------------------|
+|  1 | **src_addr**    | Adv-Addr       | 1 | Source address range, one of IPv4, IPv6, or network tag                                  |
+|  2 | **src_port**    | ls:Port        | 1 | Source service per [[RFC6335]](#rfc6335)                                                 |
+|  3 | **dst_addr**    | Adv-Addr       | 1 | Destination address range, one of IPv4, IPv6, or network tag                             |
+|  4 | **dst_port**    | ls:Port        | 1 | Destination service per [[RFC6335]](#rfc6335)                                            |
+|  5 | **protocol**    | ls:L4-Protocol | 1 | Layer 4 protocol (e.g., TCP) - see Section 3.4.2.11 of the OpenC2 Language Specification |
+|  6 | **network**     | String         | 1 | Reference to the name (also known as tag) of logical network to which the rule applies   |
+|  7 | **application** | String         | 1 | Reference to the name of the application to which the rule applies                       |
 
 Usage Requirements:
 * advanced_connection
@@ -365,11 +367,11 @@ Usage Requirements:
 
 **_Type: Adv-Addr (Choice)_**
 
-| ID | Name        | Type        | Description                                                        |
-|---:|:------------|:------------|:-------------------------------------------------------------------|
-|  1 | **v4addr**  | ls:IPv4-Net | IPv4 CIDR block address as defined in the OpenC2 LS                |
-|  2 | **v6addr**  | ls:IPv6-Net | IPv6 "CIDR block" address as defined in the OpenC2 LS              |
-|  3 | **net_tag** | String      | A network  name, e.g., as used in cloud system network definitions |
+| ID | Name        | Type        | # | Description                                                        |
+|---:|:------------|:------------|--:|:-------------------------------------------------------------------|
+|  1 | **v4addr**  | ls:IPv4-Net | 1 | IPv4 CIDR block address as defined in the OpenC2 LS                |
+|  2 | **v6addr**  | ls:IPv6-Net | 1 | IPv6 "CIDR block" address as defined in the OpenC2 LS              |
+|  3 | **net_tag** | String      | 1 | A network  name, e.g., as used in cloud system network definitions |
 
 
 
@@ -378,18 +380,20 @@ Arguments provide additional precision to a Command by including information suc
 
 **Table 2.1.3-1 Common Command Arguments Applicable to PF**
 
-**_Type: Args (Map)_**
+**_Type: Args (Map{1..*})_**
 
-| ID | Name | Type | # | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| 1 | **start_time** | Date-Time | 0..1 | The specific date/time to initiate the Command. |
-| 2 | **stop_time** | Date-Time | 0..1 | The specific date/time to terminate the Command.|
-| 3 | **duration** | Duration | 0..1 | The length of time for a Command to be in effect. |
-| 4 | **response_requested** | Response-Type | 0..1 | The type of Response required for the Command: `none`, `ack`, `status`, `complete`. |
+|   ID | Name                   | Type             | # | Description                                       |
+|-----:|:-----------------------|:-----------------|--:|:--------------------------------------------------|
+|    1 | **start_time**         | ls:Date-Time     | 1 | The specific date/time to initiate the Command.   |
+|    2 | **stop_time**          | ls:Date-Time     | 1 | The specific date/time to terminate the Command.  |
+|    3 | **duration**           | ls:Duration      | 1 |                                                   |
+|    4 | **response_requested** | ls:Response-Type | 1 |                                                   |
+| 1034 | **pf**                 | PF-ARgs          | 1 |                                                   |
+
 
 **Table 2.1.3-2 Command Arguments Unique to PF**
 
-**_Type: Args (Map)_**
+**_Type: PF-Args (Map{1..*})_**
 
 |   ID | Name             | Type          | # | Description                                                                                                                                                                                                   |
 |-----:|:-----------------|:--------------|--:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -427,19 +431,19 @@ Note that direction is required by some packet filters. For a host-based or host
 
 **_Type: Drop-Process (Enumerated)_**
 
-| ID | Name | Description |
-| :--- | :--- | :--- |
-| 1 | **none** | Drop the packet and do not send a notification to the source of the packet. |
-| 2 | **reject** | Drop the packet and send an ICMP host unreachable (or equivalent) to the source of the packet. |
-| 3 | **false_ack** | Drop the traffic and send a false acknowledgment. |
+| ID | Name          | Description                                                                                    |
+|---:|:--------------|:-----------------------------------------------------------------------------------------------|
+|  1 | **none**      | Drop the packet and do not send a notification to the source of the packet.                    |
+|  2 | **reject**    | Drop the packet and send an ICMP host unreachable (or equivalent) to the source of the packet. |
+|  3 | **false_ack** | Drop the traffic and send a false acknowledgment.                                              |
 
 **_Type: Direction (Enumerated)_**
 
-| ID | Name | Description |
-| :--- | :--- | :--- |
-| 1 | **both** | Apply rules to all traffic. |
-| 2 | **ingress** | Apply rules to incoming traffic only. |
-| 3 | **egress** | Apply rules to outgoing traffic only. |
+| ID | Name        | Description                           |
+|---:|:------------|:--------------------------------------|
+|  1 | **both**    | Apply rules to all traffic.           |
+|  2 | **ingress** | Apply rules to incoming traffic only. |
+|  3 | **egress**  | Apply rules to outgoing traffic only. |
 
 
 
@@ -482,11 +486,11 @@ Table 2.2.1-1 lists the Response Results properties defined in Version 1.0 of th
 
 **Table 2.2.1-2 Response Results Unique to PF**
 
-**_Type: Results (Map)_**
+**_Type: PF-Results (Map{1..*})_**
 
-| ID | Name | Type | Description |
-| :--- | :--- | :--- | :--- |
-|  1 | **rule_number** | Rule-ID | Rule identifier returned from allow or deny Command. |
+| ID | Name            | Type    | # | Description                                          |
+|---:|:----------------|:--------|--:|:-----------------------------------------------------|
+|  1 | **rule_number** | Rule-ID | 1 | Rule identifier returned from allow or deny Command. |
 
 ### 2.2.2 Response Status Codes
 Table 2.2.2-1 lists the Response Status Codes defined in Version 1.0 of the [OpenC2 Language Specification](#openc2-lang-v10) that are applicable to PF.
